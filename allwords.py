@@ -1,0 +1,1 @@
+# manually generate every word of a certain length, and output to .txt file

@@ -11,12 +11,11 @@ class CVC:
         self.chars = None
         self.chweights_list = None  # store the list of lists of character weights
         self.chweights_dict = dict(zip([""],[[1]]))  # dictionary of each char and array of weights by syllable number
-        # standard length is up to 10 syllables
+        # standard length is up to 10 syllables, any longer will use final values
 
 
     def makedict(self):  # initialize the weights dictionary at the end of the subclass init
         self.chweights_dict = dict(zip(self.chars,self.chweights_list))
-        # pass
 
 
     # can pass in previous character to check validity, and the syllable count
@@ -31,7 +30,6 @@ class CVC:
             if syll >= len(res): syll = -1
             w.append(res[syll])
         return random.choices(self.chars, weights=w, k=1)
-        # return random.choices(self.chars, weights=self.char_weights, k=1)
 
 
 class Init(CVC):
