@@ -124,6 +124,7 @@ class Coda(CVC):
         self.next = ["Onset", "Affricate", "End"]
         self.next_weights = [2, 1.2, 2.5]
         
+        # i forgot about the coda-only phonemes!! fix this!!
         self.chars = ["p", "b", "t", "d", "ky", "gy", "k", "g", "q", "m", "n", "ny", "l", "ly", "r", "rr"]
         self.chweights_list = [
             [0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
