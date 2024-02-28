@@ -1,3 +1,4 @@
+import time
 # manually generate every word of a certain length, and output to .txt file
 
 # options for initial syllable: onset, nothing
@@ -46,25 +47,24 @@ def addbridge(w, n, f):
             finished(word, f)
     else:
         for o in ["no", "co","g","cl"]:
-            word = w
             match o:
                 case "no":
                     # no coda, next onset
                     for c in onset:
-                        word += c
+                        word = w + c
                         addvowel(word, n, f)
                 case "co":
                     for c in coda:
                         for d in onset:
-                            word += c + d
+                            word = w + c + d
                             addvowel(word, n, f)
                 case "g":
                     for c in geminate:
-                        word += c
+                        word = w + c
                         addvowel(word, n, f)
                 case "cl":
                     for c in cluster:
-                        word += c
+                        word = w + c
                         addvowel(word, n, f)
                 case _:
                     print("Something has gone wrong here.")
@@ -72,7 +72,9 @@ def addbridge(w, n, f):
 
 
 def finished(word, f):
-    print(word, file=f)
+    # print(word, file=f)
+    print(word)
+    time.sleep(0.2)
     
 
 filename = "dict-" + str(sylcount) + ".txt"
