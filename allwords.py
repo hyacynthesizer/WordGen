@@ -29,11 +29,57 @@ for c in cluster1:
 cluster += extra
 cluster = [el for el in cluster if el not in disallowed]
 
+
 sylcount = abs(int(input("How many syllables should the words have? ")))
 if sylcount == 0: sylcount = 1
 
-currcount = 0
+def addvowel(w, n, f):
+    for c in vowel:
+        wnew = w + c
+        num = n + 1
+        addbridge(wnew, num, f)
 
-filename = "dict-" + sylcount + ".txt"
-with open(filename, "a") as f:
-    pass
+def addbridge(w, n, f):
+    if n == sylcount:
+        for c in [""] + coda:
+            word = w + c
+            finished(word, f)
+    else:
+        for o in ["no", "co","g","cl"]:
+            word = w
+            match o:
+                case "no":
+                    # no coda, next onset
+                    for c in onset:
+                        word += c
+                        addvowel(word, n, f)
+                case "co":
+                    for c in coda:
+                        for d in onset:
+                            word += c + d
+                            addvowel(word, n, f)
+                case "g":
+                    for c in geminate:
+                        word += c
+                        addvowel(word, n, f)
+                case "cl":
+                    for c in cluster:
+                        word += c
+                        addvowel(word, n, f)
+                case _:
+                    print("Something has gone wrong here.")
+                    pass
+
+
+def finished(word, f):
+    print(word, file=f)
+    
+
+filename = "dict-" + str(sylcount) + ".txt"
+with open(filename, "w", encoding="utf-8") as f:
+    
+    # looping here
+
+    for c in [""] + onset:
+        word = "" + c
+        addvowel(word, 0, f)
