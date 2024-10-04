@@ -47,7 +47,7 @@ class Vowel(CVC):
     def __init__(self):
         super().__init__()
         self.next = ["Coda", "Onset", "Affricate", "Geminate", "Cluster", "End"]
-        self.next_weights = [1.6, 2, 1.3, 1, 0.8, 2.5]
+        self.next_weights = [1.6, 2, 1.3, 1, 0.8, 2.6]
         
         self.chars = ["a", "i", "e", "ea", "u", "o", "oa"]
         self.chweights_list = [
@@ -225,6 +225,8 @@ def add_to_list(target, part):
             pass
     return part != "End"
 
+# maybe wrap this randomized length function into a specific option?
+# and then add an alternate version that generates by a fixed length?
 
 parts = [Init()]
 chars = [""]

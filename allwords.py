@@ -20,7 +20,7 @@ geminate = ["PP", "BB", "MM", "TT", "DD", "NN", "ǨǨ", "ǦǦ", "ŇŇ", "KK", "G
 cluster1 = ["P", "B", "M", "T", "D", "N", "Ǩ", "Ǧ", "Ň", "K", "G", "Q", "F", "V", "S", "Z", "Š", "Ž"]
 cluster2 = ["W", "L", "Ľ", "R", "Ř"]
 extra = ["ST", "SK", "ŠT", "ŠK", "ZD", "ZG", "ŽD", "ŽG"]  # for any atypical combinations
-disallowed = {"NR", "NŘ", "SŘ", "ZŘ", "ŠŘ", "ŽŘ"}
+disallowed = {"NR", "NŘ", "ŇR", "ŇŘ", "SŘ", "ZŘ", "ŠŘ", "ŽŘ"}
 
 cluster = []
 for c in cluster1:
@@ -29,6 +29,7 @@ for c in cluster1:
 
 cluster += extra
 cluster = [el for el in cluster if el not in disallowed]
+# print(cluster)
 
 
 sylcount = abs(int(input("How many syllables should the words have? ")))
